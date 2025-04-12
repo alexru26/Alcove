@@ -2,7 +2,7 @@
 // Created by Alex Ru on 4/12/25.
 //
 
-#include "LFUCache.hpp"
+#include <Cache/LFUCache.hpp>
 #include <gtest/gtest.h>
 
 TEST(LFUCacheTest, BasicEviction) {

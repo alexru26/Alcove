@@ -32,3 +32,17 @@
 /Users/26ru/CLionProjects/Alcove/build/_deps/googletest-build/googletest/CMakeFiles/install.dir
 /Users/26ru/CLionProjects/Alcove/build/_deps/googletest-build/googletest/CMakeFiles/install/local.dir
 /Users/26ru/CLionProjects/Alcove/build/_deps/googletest-build/googletest/CMakeFiles/install/strip.dir
+/Users/26ru/CLionProjects/Alcove/build/_deps/httplib-build/CMakeFiles/test.dir
+/Users/26ru/CLionProjects/Alcove/build/_deps/httplib-build/CMakeFiles/edit_cache.dir
+/Users/26ru/CLionProjects/Alcove/build/_deps/httplib-build/CMakeFiles/rebuild_cache.dir
+/Users/26ru/CLionProjects/Alcove/build/_deps/httplib-build/CMakeFiles/list_install_components.dir
+/Users/26ru/CLionProjects/Alcove/build/_deps/httplib-build/CMakeFiles/install.dir
+/Users/26ru/CLionProjects/Alcove/build/_deps/httplib-build/CMakeFiles/install/local.dir
+/Users/26ru/CLionProjects/Alcove/build/_deps/httplib-build/CMakeFiles/install/strip.dir
+/Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-build/CMakeFiles/test.dir
+/Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-build/CMakeFiles/edit_cache.dir
+/Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-build/CMakeFiles/rebuild_cache.dir
+/Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-build/CMakeFiles/list_install_components.dir
+/Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-build/CMakeFiles/install.dir
+/Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-build/CMakeFiles/install/local.dir
+/Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-build/CMakeFiles/install/strip.dir

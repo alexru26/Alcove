@@ -2,7 +2,7 @@
 // Created by Alex Ru on 4/12/25.
 //
 
-#include "LRUCache.hpp"
+#include <Cache/LRUCache.hpp>
 #include <gtest/gtest.h>
 
 TEST(LRUCacheTest, BasicEviction) {

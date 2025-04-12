@@ -2,7 +2,7 @@
 // Created by Alex Ru on 4/12/25.
 //
 
-#include "FIFOCache.hpp"
+#include <Cache/FIFOCache.hpp>
 #include <gtest/gtest.h>
 
 TEST(FIFOCacheTest, BasicEviction) {

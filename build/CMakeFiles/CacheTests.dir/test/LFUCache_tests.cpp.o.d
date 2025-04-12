@@ -1,7 +1,7 @@
 CMakeFiles/CacheTests.dir/test/LFUCache_tests.cpp.o: \
   /Users/26ru/CLionProjects/Alcove/test/LFUCache_tests.cpp \
-  /Users/26ru/CLionProjects/Alcove/include/LFUCache.hpp \
-  /Users/26ru/CLionProjects/Alcove/include/Cache.h \
+  /Users/26ru/CLionProjects/Alcove/include/Cache/LFUCache.hpp \
+  /Users/26ru/CLionProjects/Alcove/include/Cache/Cache.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__assert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__assertion_handler \
