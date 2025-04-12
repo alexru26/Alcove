@@ -1,0 +1,3 @@
+/Users/26ru/CLionProjects/Alcove/cmake-build-debug/CMakeFiles/Alcove.dir
+/Users/26ru/CLionProjects/Alcove/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/26ru/CLionProjects/Alcove/cmake-build-debug/CMakeFiles/rebuild_cache.dir
