@@ -1,0 +1,5 @@
+if(EXISTS "/Users/26ru/CLionProjects/Alcove/build/CacheTests[1]_tests.cmake")
+  include("/Users/26ru/CLionProjects/Alcove/build/CacheTests[1]_tests.cmake")
+else()
+  add_test(CacheTests_NOT_BUILT CacheTests_NOT_BUILT)
+endif()

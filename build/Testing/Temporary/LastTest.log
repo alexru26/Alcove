@@ -1,0 +1,219 @@
+Start testing: Apr 12 14:32 EDT
+----------------------------------------------------------
+1/8 Testing: FIFOCacheTest.BasicEviction
+1/8 Test: FIFOCacheTest.BasicEviction
+Command: "/Users/26ru/CLionProjects/Alcove/build/CacheTests" "--gtest_filter=FIFOCacheTest.BasicEviction" "--gtest_also_run_disabled_tests"
+Directory: /Users/26ru/CLionProjects/Alcove/build
+"FIFOCacheTest.BasicEviction" start time: Apr 12 14:32 EDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/26ru/CLionProjects/Alcove/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = FIFOCacheTest.BasicEviction
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FIFOCacheTest
+[ RUN      ] FIFOCacheTest.BasicEviction
+[       OK ] FIFOCacheTest.BasicEviction (0 ms)
+[----------] 1 test from FIFOCacheTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"FIFOCacheTest.BasicEviction" end time: Apr 12 14:32 EDT
+"FIFOCacheTest.BasicEviction" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/8 Testing: FIFOCacheTest.ZeroCapacity
+2/8 Test: FIFOCacheTest.ZeroCapacity
+Command: "/Users/26ru/CLionProjects/Alcove/build/CacheTests" "--gtest_filter=FIFOCacheTest.ZeroCapacity" "--gtest_also_run_disabled_tests"
+Directory: /Users/26ru/CLionProjects/Alcove/build
+"FIFOCacheTest.ZeroCapacity" start time: Apr 12 14:32 EDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/26ru/CLionProjects/Alcove/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = FIFOCacheTest.ZeroCapacity
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FIFOCacheTest
+[ RUN      ] FIFOCacheTest.ZeroCapacity
+[       OK ] FIFOCacheTest.ZeroCapacity (0 ms)
+[----------] 1 test from FIFOCacheTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"FIFOCacheTest.ZeroCapacity" end time: Apr 12 14:32 EDT
+"FIFOCacheTest.ZeroCapacity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/8 Testing: FIFOCacheTest.UpdateExistingKey
+3/8 Test: FIFOCacheTest.UpdateExistingKey
+Command: "/Users/26ru/CLionProjects/Alcove/build/CacheTests" "--gtest_filter=FIFOCacheTest.UpdateExistingKey" "--gtest_also_run_disabled_tests"
+Directory: /Users/26ru/CLionProjects/Alcove/build
+"FIFOCacheTest.UpdateExistingKey" start time: Apr 12 14:32 EDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/26ru/CLionProjects/Alcove/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = FIFOCacheTest.UpdateExistingKey
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FIFOCacheTest
+[ RUN      ] FIFOCacheTest.UpdateExistingKey
+[       OK ] FIFOCacheTest.UpdateExistingKey (0 ms)
+[----------] 1 test from FIFOCacheTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"FIFOCacheTest.UpdateExistingKey" end time: Apr 12 14:32 EDT
+"FIFOCacheTest.UpdateExistingKey" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/8 Testing: LRUCacheTest.BasicEviction
+4/8 Test: LRUCacheTest.BasicEviction
+Command: "/Users/26ru/CLionProjects/Alcove/build/CacheTests" "--gtest_filter=LRUCacheTest.BasicEviction" "--gtest_also_run_disabled_tests"
+Directory: /Users/26ru/CLionProjects/Alcove/build
+"LRUCacheTest.BasicEviction" start time: Apr 12 14:32 EDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/26ru/CLionProjects/Alcove/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = LRUCacheTest.BasicEviction
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LRUCacheTest
+[ RUN      ] LRUCacheTest.BasicEviction
+[       OK ] LRUCacheTest.BasicEviction (0 ms)
+[----------] 1 test from LRUCacheTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"LRUCacheTest.BasicEviction" end time: Apr 12 14:32 EDT
+"LRUCacheTest.BasicEviction" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/8 Testing: LRUCacheTest.UpdateExistingKey
+5/8 Test: LRUCacheTest.UpdateExistingKey
+Command: "/Users/26ru/CLionProjects/Alcove/build/CacheTests" "--gtest_filter=LRUCacheTest.UpdateExistingKey" "--gtest_also_run_disabled_tests"
+Directory: /Users/26ru/CLionProjects/Alcove/build
+"LRUCacheTest.UpdateExistingKey" start time: Apr 12 14:32 EDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/26ru/CLionProjects/Alcove/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = LRUCacheTest.UpdateExistingKey
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LRUCacheTest
+[ RUN      ] LRUCacheTest.UpdateExistingKey
+[       OK ] LRUCacheTest.UpdateExistingKey (0 ms)
+[----------] 1 test from LRUCacheTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"LRUCacheTest.UpdateExistingKey" end time: Apr 12 14:32 EDT
+"LRUCacheTest.UpdateExistingKey" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/8 Testing: LFUCacheTest.BasicEviction
+6/8 Test: LFUCacheTest.BasicEviction
+Command: "/Users/26ru/CLionProjects/Alcove/build/CacheTests" "--gtest_filter=LFUCacheTest.BasicEviction" "--gtest_also_run_disabled_tests"
+Directory: /Users/26ru/CLionProjects/Alcove/build
+"LFUCacheTest.BasicEviction" start time: Apr 12 14:32 EDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/26ru/CLionProjects/Alcove/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = LFUCacheTest.BasicEviction
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LFUCacheTest
+[ RUN      ] LFUCacheTest.BasicEviction
+[       OK ] LFUCacheTest.BasicEviction (0 ms)
+[----------] 1 test from LFUCacheTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"LFUCacheTest.BasicEviction" end time: Apr 12 14:32 EDT
+"LFUCacheTest.BasicEviction" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/8 Testing: LFUCacheTest.TieBreakerEviction
+7/8 Test: LFUCacheTest.TieBreakerEviction
+Command: "/Users/26ru/CLionProjects/Alcove/build/CacheTests" "--gtest_filter=LFUCacheTest.TieBreakerEviction" "--gtest_also_run_disabled_tests"
+Directory: /Users/26ru/CLionProjects/Alcove/build
+"LFUCacheTest.TieBreakerEviction" start time: Apr 12 14:32 EDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/26ru/CLionProjects/Alcove/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = LFUCacheTest.TieBreakerEviction
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LFUCacheTest
+[ RUN      ] LFUCacheTest.TieBreakerEviction
+[       OK ] LFUCacheTest.TieBreakerEviction (0 ms)
+[----------] 1 test from LFUCacheTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"LFUCacheTest.TieBreakerEviction" end time: Apr 12 14:32 EDT
+"LFUCacheTest.TieBreakerEviction" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/8 Testing: LFUCacheTest.UpdateExistingKey
+8/8 Test: LFUCacheTest.UpdateExistingKey
+Command: "/Users/26ru/CLionProjects/Alcove/build/CacheTests" "--gtest_filter=LFUCacheTest.UpdateExistingKey" "--gtest_also_run_disabled_tests"
+Directory: /Users/26ru/CLionProjects/Alcove/build
+"LFUCacheTest.UpdateExistingKey" start time: Apr 12 14:32 EDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/26ru/CLionProjects/Alcove/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = LFUCacheTest.UpdateExistingKey
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LFUCacheTest
+[ RUN      ] LFUCacheTest.UpdateExistingKey
+[       OK ] LFUCacheTest.UpdateExistingKey (0 ms)
+[----------] 1 test from LFUCacheTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"LFUCacheTest.UpdateExistingKey" end time: Apr 12 14:32 EDT
+"LFUCacheTest.UpdateExistingKey" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Apr 12 14:32 EDT

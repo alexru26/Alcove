@@ -1,0 +1,9 @@
+FIFOCacheTest.BasicEviction 3 0.00625085
+FIFOCacheTest.ZeroCapacity 3 0.00213436
+FIFOCacheTest.UpdateExistingKey 3 0.00181586
+LRUCacheTest.BasicEviction 3 0.00188894
+LRUCacheTest.UpdateExistingKey 1 0.00494429
+LFUCacheTest.BasicEviction 3 0.00161418
+LFUCacheTest.TieBreakerEviction 3 0.001492
+LFUCacheTest.UpdateExistingKey 3 0.00149457
+---
