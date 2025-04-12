@@ -1,5 +1,5 @@
 # Alcove
-# Build and Testing
+## Build and Testing
 ``` 
 cmake -S . -B build
 cmake --build build
