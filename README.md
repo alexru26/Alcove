@@ -8,6 +8,8 @@ Alcove is an open-source framework that semi-randomly queries data from a SQL da
 |:----------------|:-----------------------------------------|
 | Hit Rate        | Queries from cache out of total queries  |
 | Average Latency | Time per query                           |
+| Throughput      | Requests per second                      |
+| Total Duration  | Total time to go through requests        |
 | Memory Usage    | Memory consumed by cache data structures |
 
 
