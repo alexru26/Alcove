@@ -1,19 +1,23 @@
-#include <Proxy/WeatherProxy.hpp>
+#include <Cache/FIFOCache.hpp>
+#include <Cache/LFUCache.hpp>
 #include <Cache/LRUCache.hpp>
 
+#include <Proxy/WeatherProxy.hpp>
+
 int main() {
-    auto cache = std::make_unique<LRUCache<std::string, nlohmann::json>>(100);
-    WeatherProxy weather_proxy(std::move(cache));
+    auto fifo = std::make_unique<FIFOCache<std::string, nlohmann::json>>(10);
+    auto lru = std::make_unique<LRUCache<std::string, nlohmann::json>>(10);
+    auto lfu = std::make_unique<LFUCache<std::string, nlohmann::json>>(10);
 
-    try {
-        const auto data = weather_proxy.query("London");
+    WeatherProxy fifo_proxy(std::move(fifo));
+    WeatherProxy lru_proxy(std::move(lru));
+    WeatherProxy lfu_proxy(std::move(lfu));
 
-        std::cout << "Temperature: " << data["days"][0]["temp"] << "°C\n";
-        std::cout << "Conditions: " << data["days"][0]["conditions"] << "\n";
-        std::cout << "Sunrise: " << data["days"][0]["sunrise"] << "\n";
-    } catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-        return 1;
-    }
+    const std::vector<std::string> requests = WeatherProxy::generateRandomRequests(100);
+
+    fifo_proxy.runBenchmark(requests);
+    lru_proxy.runBenchmark(requests);
+    lfu_proxy.runBenchmark(requests);
+
     return 0;
 }

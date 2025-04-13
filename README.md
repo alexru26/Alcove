@@ -1,6 +1,17 @@
 <h1 style="text-align: center;">Alcove</h1>
+
 ## Introduction
 Alcove is an open-source framework that semi-randomly queries data from a SQL database and stores them via different caching algorithms.
+
+## Performance Metrics
+| Metric          | Description                              |
+|:----------------|:-----------------------------------------|
+| Hit Rate        | Queries from cache out of total queries  |
+| Average Latency | Time per query                           |
+| Throughput      | Requests per second                      |
+| Total Duration  | Total time to go through requests        |
+| Memory Usage    | Memory consumed by cache data structures |
+
 
 ## Building and Testing
 To build the project and set up for testing, run these commands:
