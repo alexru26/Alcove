@@ -1,7 +1,6 @@
 CMakeFiles/Alcove.dir/src/main.cpp.o: \
   /Users/26ru/CLionProjects/Alcove/src/main.cpp \
-  /Users/26ru/CLionProjects/Alcove/include/Proxy/WeatherProxy.hpp \
-  /Users/26ru/CLionProjects/Alcove/include/Proxy/Proxy.hpp \
+  /Users/26ru/CLionProjects/Alcove/include/Cache/FIFOCache.hpp \
   /Users/26ru/CLionProjects/Alcove/include/Cache/Cache.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__assert \
@@ -960,6 +959,84 @@ CMakeFiles/Alcove.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/print \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/unistd.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/list \
+  /Users/26ru/CLionProjects/Alcove/include/Cache/LFUCache.hpp \
+  /Users/26ru/CLionProjects/Alcove/include/Cache/LRUCache.hpp \
+  /Users/26ru/CLionProjects/Alcove/include/Proxy/WeatherProxy.hpp \
+  /Users/26ru/CLionProjects/Alcove/include/Proxy/Proxy.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/chrono \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/calendar.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/convert_to_tm.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/concepts.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/hh_mm_ss.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/day.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/file_clock.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/month.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/month_weekday.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/weekday.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/monthday.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/year.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/year_month.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/year_month_day.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/year_month_weekday.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/literals.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/formatter.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/ostream.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/parser_std_format_spec.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/sstream \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/forward_list \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/charconv \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__charconv/from_chars_integral.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__charconv/from_chars_result.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__charconv/to_chars.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/iomanip \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/random \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/bernoulli_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/uniform_real_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/generate_canonical.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/binomial_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/cauchy_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/chi_squared_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/gamma_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/exponential_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/clamp_to_integral.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/default_random_engine.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/linear_congruential_engine.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/is_seed_sequence.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/discard_block_engine.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/discrete_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/numeric \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/accumulate.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/adjacent_difference.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/exclusive_scan.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/gcd_lcm.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/inclusive_scan.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/inner_product.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/iota.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/midpoint.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/partial_sum.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/pstl_reduce.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/saturation_arithmetic.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/transform_exclusive_scan.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/transform_inclusive_scan.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/extreme_value_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/fisher_f_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/geometric_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/negative_binomial_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/poisson_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/normal_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/independent_bits_engine.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/knuth_b.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/shuffle_order_engine.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/lognormal_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/mersenne_twister_engine.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/piecewise_constant_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/piecewise_linear_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/random_device.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/ranlux.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/subtract_with_carry_engine.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/seed_seq.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/student_t_distribution.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/weibull_distribution.h \
   /Users/26ru/CLionProjects/Alcove/build/_deps/httplib-src/httplib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/arpa/inet.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/netinet/in.h \
@@ -1017,10 +1094,8 @@ CMakeFiles/Alcove.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/file_type.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/perms.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/file_time_type.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__chrono/file_clock.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/filesystem_error.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/path.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/iomanip \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/operations.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/perm_options.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/space_info.h \
@@ -1031,57 +1106,8 @@ CMakeFiles/Alcove.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/u8path.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/map \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__tree \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/random \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/bernoulli_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/uniform_real_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/generate_canonical.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/binomial_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/cauchy_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/chi_squared_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/gamma_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/exponential_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/clamp_to_integral.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/default_random_engine.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/linear_congruential_engine.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/is_seed_sequence.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/discard_block_engine.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/discrete_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/numeric \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/accumulate.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/adjacent_difference.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/exclusive_scan.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/gcd_lcm.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/inclusive_scan.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/inner_product.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/iota.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/midpoint.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/partial_sum.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/pstl_reduce.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/saturation_arithmetic.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/transform_exclusive_scan.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__numeric/transform_inclusive_scan.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/extreme_value_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/fisher_f_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/geometric_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/negative_binomial_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/poisson_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/normal_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/independent_bits_engine.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/knuth_b.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/shuffle_order_engine.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/lognormal_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/mersenne_twister_engine.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/piecewise_constant_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/piecewise_linear_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/random_device.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/ranlux.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/subtract_with_carry_engine.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/seed_seq.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/student_t_distribution.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/weibull_distribution.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/regex \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/set \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/sstream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/sys/stat.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/thread \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__thread/formatter.h \
@@ -1441,7 +1467,6 @@ CMakeFiles/Alcove.dir/src/main.cpp.o: \
   /Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-src/include/nlohmann/adl_serializer.hpp \
   /Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-src/include/nlohmann/detail/abi_macros.hpp \
   /Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-src/include/nlohmann/detail/conversions/from_json.hpp \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/forward_list \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/valarray \
   /Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-src/include/nlohmann/detail/exceptions.hpp \
   /Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-src/include/nlohmann/detail/value_t.hpp \
@@ -1517,5 +1542,4 @@ CMakeFiles/Alcove.dir/src/main.cpp.o: \
   /Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-src/include/nlohmann/ordered_map.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/any \
   /Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-src/include/nlohmann/detail/macro_unscope.hpp \
-  /Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-src/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
-  /Users/26ru/CLionProjects/Alcove/include/Cache/LRUCache.hpp
+  /Users/26ru/CLionProjects/Alcove/build/_deps/nlohmann_json-src/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
