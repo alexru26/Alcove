@@ -14,6 +14,7 @@ template<typename Key, typename Value>
 class Cache {
 protected:
     size_t capacity;
+    size_t memory = 0;
 public:
     explicit Cache(const size_t capacity) : capacity(capacity) {}
     virtual ~Cache() = default;
@@ -22,6 +23,8 @@ public:
     virtual void put(Key key, Value value) = 0;
     virtual Value get(Key key) = 0;
     virtual void print() = 0;
+
+    [[nodiscard]] size_t memoryUsed() const { return memory; }
 };
 
 #endif //CACHE_H

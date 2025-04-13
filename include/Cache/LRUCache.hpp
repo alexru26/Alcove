@@ -38,18 +38,23 @@ public:
 
         auto it = cache.find(key);
         if (it != cache.end()) {
+            this->memory -= sizeof(it->second.first);
             it->second.first = value;
+            this->memory += sizeof(value);
             keys.erase(it->second.second);
         } else {
             if (keys.size() >= this->capacity) {
                 Key evict = keys.back();
                 keys.pop_back();
                 cache.erase(evict);
+                this->memory -= (sizeof(Key) + sizeof(cache[evict].first));
             }
         }
 
         keys.push_front(key);
         cache[key] = {value, keys.begin()};
+
+        this->memory += sizeof(Key) + sizeof(value);
     }
 
     Value get(Key key) override {

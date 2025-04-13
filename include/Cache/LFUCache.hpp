@@ -34,12 +34,17 @@ public:
         if (this->capacity == 0) return;
 
         if (exists(key)) {
-            cache[key].value = value;
+            Node& node = cache[key];
+            this->memory -= sizeof(node.value);
+            node.value = value;
+            this->memory += sizeof(value);
             return;
         }
 
         if (cache.size() == this->capacity) {
             Key evict = freqList[minFreq].back();
+            Node& evicted_node = cache[evict];
+            this->memory -= sizeof(Key) + sizeof(evicted_node.value);
             freqList[minFreq].pop_back();
             cache.erase(evict);
             if (freqList[minFreq].empty()) {
@@ -47,9 +52,9 @@ public:
             }
         }
 
-
         freqList[1].push_front(key);
         cache[key] = {value, 1, freqList[1].begin()};
+        this->memory += sizeof(Key) + sizeof(value);
         minFreq = 1;
     }
 

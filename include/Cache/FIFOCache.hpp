@@ -44,11 +44,16 @@ public:
             Key evict = keys.front();
             keys.pop();
             cache.erase(evict);
+
+            size_t evicted_size = sizeof(evict) + sizeof(cache[evict]);
+            this->memory -= evicted_size;
         }
 
         keys.push(key);
         cache[key] = value;
 
+        size_t entry_size = sizeof(key) + sizeof(value);
+        this->memory += entry_size;
     }
 
     Value get(Key key) override {
