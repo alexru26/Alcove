@@ -14,10 +14,9 @@ template<typename Key, typename Value>
 class Proxy {
 protected:
     std::unique_ptr<Cache<Key, Value>> cache;
-    virtual Value runPrivateQuery(const Key& key) = 0;
-
     size_t hits = 0;
     size_t misses = 0;
+    virtual Value runPrivateQuery(const Key& key) = 0;
 public:
     explicit Proxy(std::unique_ptr<Cache<Key, Value>> cache) : cache(std::move(cache)) {}
 
