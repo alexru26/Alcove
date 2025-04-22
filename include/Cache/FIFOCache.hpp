@@ -45,14 +45,13 @@ public:
             keys.pop();
             cache.erase(evict);
 
-            size_t evicted_size = sizeof(evict) + sizeof(cache[evict]);
-            this->memory -= evicted_size;
+            this->memory -= 2 * sizeof(evict) + sizeof(cache[evict]);
         }
 
         keys.push(key);
         cache[key] = value;
 
-        size_t entry_size = sizeof(key) + sizeof(value);
+        size_t entry_size = 2 * sizeof(key) + sizeof(value);
         this->memory += entry_size;
     }
 

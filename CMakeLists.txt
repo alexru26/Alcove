@@ -55,9 +55,11 @@ target_link_libraries(Alcove
 )
 
 # Add test executable
-add_executable(CacheTests test/FIFOCache_tests.cpp
+add_executable(CacheTests
+        test/FIFOCache_tests.cpp
         test/LRUCache_tests.cpp
-        test/LFUCache_tests.cpp)
+        test/LFUCache_tests.cpp
+)
 
 target_include_directories(CacheTests PUBLIC include)
 
