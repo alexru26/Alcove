@@ -15,8 +15,8 @@ int main() {
 
     const std::vector<std::string> requests = WeatherProxy::getRandomRequests("uniform", 100);
 
-    fifo_proxy.runBenchmark(requests);
-    lru_proxy.runBenchmark(requests);
+    // fifo_proxy.runBenchmark(requests);
+    // lru_proxy.runBenchmark(requests);
     lfu_proxy.runBenchmark(requests);
 
     return 0;

@@ -20,7 +20,6 @@ private:
 
     std::unordered_map<Key, Node> cache;
     std::unordered_map<int, std::list<Key>> freqList;
-
 public:
     explicit LFUCache(size_t capacity) : Cache<Key, Value>(capacity) {}
 
@@ -44,17 +43,19 @@ public:
         if (cache.size() == this->capacity) {
             Key evict = freqList[minFreq].back();
             Node& evicted_node = cache[evict];
-            this->memory -= sizeof(Key) + sizeof(evicted_node.value);
             freqList[minFreq].pop_back();
             cache.erase(evict);
+            this->memory -= 2 * sizeof(evict) + sizeof(evicted_node);
             if (freqList[minFreq].empty()) {
                 freqList.erase(minFreq);
+                this->memory -= sizeof(minFreq);
             }
         }
 
         freqList[1].push_front(key);
+        if (freqList[1].size() == 1) this->memory += sizeof(int);
         cache[key] = {value, 1, freqList[1].begin()};
-        this->memory += sizeof(Key) + sizeof(value);
+        this->memory += 2 * sizeof(key) + sizeof(cache[key]);
         minFreq = 1;
     }
 
@@ -65,13 +66,17 @@ public:
         int oldFreq = node.freq;
 
         freqList[oldFreq].erase(node.listIt);
+        this->memory -= sizeof(key);
         if (freqList[oldFreq].empty()) {
             freqList.erase(oldFreq);
+            this->memory -= sizeof(oldFreq);
             if (minFreq == oldFreq) minFreq++;
         }
 
         ++node.freq;
         freqList[node.freq].push_front(key);
+        if (freqList[node.freq].size() == 1) this->memory += sizeof(int);
+        this->memory += sizeof(key);
         node.listIt = freqList[node.freq].begin();
 
         return node.value;
