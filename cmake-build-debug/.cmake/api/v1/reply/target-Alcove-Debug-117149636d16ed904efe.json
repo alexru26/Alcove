@@ -253,7 +253,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "include/myRandom/myRandom.hpp",
+			"path" : "include/MyRandom/MyRandom.hpp",
 			"sourceGroupIndex" : 1
 		}
 	],

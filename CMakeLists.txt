@@ -42,7 +42,7 @@ add_executable(Alcove
         include/Cache/LFUCache.hpp
         include/Proxy/WeatherProxy.hpp
         include/Proxy/Proxy.hpp
-        include/myRandom/myRandom.hpp
+        include/MyRandom/MyRandom.hpp
 )
 
 target_include_directories(Alcove PUBLIC include)
