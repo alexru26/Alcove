@@ -6,9 +6,9 @@
 #define WEATHER_PROXY_HPP
 
 #include "Proxy.hpp"
-#include <cstdlib>
 #include <httplib.h>
 #include <nlohmann/json.hpp>
+#include <MyRandom/MyRandom.hpp>
 
 using json = nlohmann::json;
 
@@ -46,7 +46,7 @@ public:
 
     ~WeatherProxy() override = default;
 
-    static std::vector<std::string> generateRandomRequests(const size_t num_requests) {
+    static std::vector<std::string> getRandomRequests(const std::string& type, const size_t num_requests) {
         static const std::vector<std::string> CITIES = {
             "Tokyo",      // rank 1
             "New York",   // rank 2
@@ -70,33 +70,7 @@ public:
             "Mexico City" // rank 20
         };
 
-        // Set the exponent parameter. Higher s makes the distribution even more skewed.
-        const double s = 1.0;
-        std::vector<double> weights;
-        weights.reserve(CITIES.size());
-
-        // Calculate weights based on Zipf's law: weight ∝ 1/(rank^s)
-        for (size_t i = 0; i < CITIES.size(); ++i) {
-            weights.push_back(1.0 / std::pow(static_cast<double>(i + 1), s));
-        }
-
-        // Reserve enough space for the random requests.
-        std::vector<std::string> requests;
-        requests.reserve(num_requests);
-
-        // Initialize random number generator.
-        std::mt19937 rng(std::random_device{}());
-
-        // Create a discrete distribution with the provided weights.
-        std::discrete_distribution<size_t> dist(weights.begin(), weights.end());
-
-        // Generate the requests.
-        for (size_t i = 0; i < num_requests; ++i) {
-            size_t index = dist(rng);
-            requests.push_back(CITIES[index]);
-        }
-
-        return requests;
+        return MyRandom<std::string>::generateRandomRequests(type, num_requests, CITIES);
     }
 };
 

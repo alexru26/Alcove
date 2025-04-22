@@ -1,7 +1,7 @@
 # Distributed under the OSI-approved BSD 3-Clause License.  See accompanying
 # file Copyright.txt or https://cmake.org/licensing for details.
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION ${CMAKE_VERSION}) # this file comes with cmake
 
 if(EXISTS "/Users/26ru/CLionProjects/Alcove/cmake-build-debug/_deps/httplib-subbuild/httplib-populate-prefix/src/httplib-populate-stamp/httplib-populate-gitclone-lastrun.txt" AND EXISTS "/Users/26ru/CLionProjects/Alcove/cmake-build-debug/_deps/httplib-subbuild/httplib-populate-prefix/src/httplib-populate-stamp/httplib-populate-gitinfo.txt" AND
   "/Users/26ru/CLionProjects/Alcove/cmake-build-debug/_deps/httplib-subbuild/httplib-populate-prefix/src/httplib-populate-stamp/httplib-populate-gitclone-lastrun.txt" IS_NEWER_THAN "/Users/26ru/CLionProjects/Alcove/cmake-build-debug/_deps/httplib-subbuild/httplib-populate-prefix/src/httplib-populate-stamp/httplib-populate-gitinfo.txt")

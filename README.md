@@ -12,6 +12,24 @@ Alcove is an open-source framework that semi-randomly queries data from a SQL da
 | Total Duration  | Total time to go through requests        |
 | Memory Usage    | Memory consumed by cache data structures |
 
+## Command Line Arguments
+### --api [arg]
+Specifies which API to pull data from. Options are:
+
+| Argument | Description                                                                        |
+|:---------|:-----------------------------------------------------------------------------------|
+| weather  | Daily weather data from https://weather.visualcrossing.com                         |
+
+### --threads [arg]
+Specifies the number of CPU threads to use for the program.
+
+### --random [arg]
+Specifies which random distribution algorithm to use. Options are:
+
+| Argument | Description                                                                                                                                   |
+|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------|
+| uniform  | Complete uniform distribution across options                                                                                                  |
+| zipf     | [Zipfian distribution](https://en.wikipedia.org/wiki/Zipf%27s_law), which makes each option's frequency inversely proportional to their rank. |
 
 ## Building and Testing
 To build the project and set up for testing, run these commands:
