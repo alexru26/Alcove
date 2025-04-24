@@ -50,9 +50,7 @@ public:
 
         keys.push(key);
         cache[key] = value;
-
-        size_t entry_size = 2 * sizeof(key) + sizeof(value);
-        this->memory += entry_size;
+        this->memory += 2 * sizeof(key) + sizeof(value);
     }
 
     Value get(Key key) override {

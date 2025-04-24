@@ -12,7 +12,7 @@ class LRUCache final : public Cache<Key, Value> {
 private:
     using List = std::list<Key>;
     List keys;
-    std::unordered_map<Key, std::pair<Value, typename List::iterator>> cache; // DeepSeek
+    std::unordered_map<Key, std::pair<Value, typename List::iterator>> cache;
 public:
     explicit LRUCache(size_t capacity) : Cache<Key, Value>(capacity) {}
 
@@ -36,21 +36,24 @@ public:
     void put(Key key, Value value) override {
         if (this->capacity == 0) return;
 
-        auto it = cache.find(key);
-        if (it != cache.end()) {
-            keys.erase(it->second.second);
-        } else {
-            if (keys.size() >= this->capacity) {
-                Key evict = keys.back();
-                keys.pop_back();
-                cache.erase(evict);
-                this->memory -= 2 * sizeof(key) + sizeof(cache[evict]);
-            }
-            this->memory += 2 * sizeof(key) + sizeof(value) + sizeof(typename List::iterator);
+        if (exists(key)) {
+            keys.erase(cache[key].second);
+            keys.push_front(key);
+            cache[key].first = value;
+            cache[key].second = keys.begin();
+            return;
+        }
+
+        if (keys.size() >= this->capacity) {
+            Key evict = keys.back();
+            keys.pop_back();
+            this->memory -= 2 * sizeof(key) + sizeof(cache[evict]);
+            cache.erase(evict);
         }
 
         keys.push_front(key);
         cache[key] = {value, keys.begin()};
+        this->memory += 2 * sizeof(key) + sizeof(cache[key]);
     }
 
     Value get(Key key) override {

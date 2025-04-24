@@ -34,9 +34,7 @@ public:
 
         if (exists(key)) {
             Node& node = cache[key];
-            this->memory -= sizeof(node.value);
             node.value = value;
-            this->memory += sizeof(value);
             return;
         }
 
@@ -48,15 +46,16 @@ public:
             this->memory -= 2 * sizeof(evict) + sizeof(evicted_node);
             if (freqList[minFreq].empty()) {
                 freqList.erase(minFreq);
+                minFreq++;
                 this->memory -= sizeof(minFreq);
             }
         }
 
         freqList[1].push_front(key);
-        if (freqList[1].size() == 1) this->memory += sizeof(int);
+        if (minFreq != 1) this->memory += sizeof(minFreq);
         cache[key] = {value, 1, freqList[1].begin()};
-        this->memory += 2 * sizeof(key) + sizeof(cache[key]);
         minFreq = 1;
+        this->memory += 2 * sizeof(key) + sizeof(cache[key]);
     }
 
     Value get(Key key) override {
@@ -66,7 +65,6 @@ public:
         int oldFreq = node.freq;
 
         freqList[oldFreq].erase(node.listIt);
-        this->memory -= sizeof(key);
         if (freqList[oldFreq].empty()) {
             freqList.erase(oldFreq);
             this->memory -= sizeof(oldFreq);
@@ -76,15 +74,23 @@ public:
         ++node.freq;
         freqList[node.freq].push_front(key);
         if (freqList[node.freq].size() == 1) this->memory += sizeof(int);
-        this->memory += sizeof(key);
         node.listIt = freqList[node.freq].begin();
 
         return node.value;
     }
 
     void print() override {
+        std::cout << "Keys and Freqs: " << std::endl;
         for (const auto& [key, node] : cache) {
             std::cout << key << " : " << node.value << " (freq: " << node.freq << ")" << std::endl;
+        }
+        std::cout << "Frequency map: " << std::endl;
+        for (const auto& [freq, node] : freqList) {
+            std::cout << freq << " : ";
+            for (const auto& key : node) {
+                std::cout << key << " ";
+            }
+            std::cout << std::endl;
         }
     }
 };
