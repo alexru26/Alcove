@@ -13,10 +13,10 @@ int main() {
     WeatherProxy lru_proxy(std::move(lru));
     WeatherProxy lfu_proxy(std::move(lfu));
 
-    const std::vector<std::string> requests = WeatherProxy::getRandomRequests("uniform", 100);
+    const std::vector<std::string> requests = WeatherProxy::getRandomRequests("zipf", 100);
 
-    // fifo_proxy.runBenchmark(requests);
-    // lru_proxy.runBenchmark(requests);
+    fifo_proxy.runBenchmark(requests);
+    lru_proxy.runBenchmark(requests);
     lfu_proxy.runBenchmark(requests);
 
     return 0;

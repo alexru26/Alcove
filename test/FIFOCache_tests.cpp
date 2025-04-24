@@ -9,25 +9,49 @@ TEST(FIFOCacheTest, BasicEviction) {
     FIFOCache<int, std::string> cache(2);
     cache.put(1, "A");
     cache.put(2, "B");
-    cache.put(3, "C"); // Evicts 1
+    cache.put(3, "C");
 
-    EXPECT_EQ(cache.get(1), "");   // Not found
-    EXPECT_EQ(cache.get(2), "B");  // Still present
+    EXPECT_EQ(cache.get(1), "");
+    EXPECT_EQ(cache.get(2), "B");
+    EXPECT_EQ(cache.get(3), "C");
+
+    cache.put(4, "D");
+    EXPECT_EQ(cache.get(1), "");
+    EXPECT_EQ(cache.get(2), "");
+    EXPECT_EQ(cache.get(3), "C");
+    EXPECT_EQ(cache.get(4), "D");
 }
 
 TEST(FIFOCacheTest, ZeroCapacity) {
-    FIFOCache<int, int> cache(0);
-    cache.put(1, 100); // No-op
-    EXPECT_EQ(cache.get(1), 0); // Not stored
+    FIFOCache<int, std::string> cache(0);
+    cache.put(1, "A");
+    EXPECT_EQ(cache.get(1), "");
 }
 
 TEST(FIFOCacheTest, UpdateExistingKey) {
     FIFOCache<int, std::string> cache(2);
     cache.put(1, "A");
-    cache.put(1, "A+"); // Update
+    cache.put(1, "A+");
     cache.put(2, "B");
-    cache.put(3, "C"); // Evicts 1 (oldest insertion, not 2)
 
-    EXPECT_EQ(cache.get(1), "");   // Evicted
+    EXPECT_EQ(cache.get(1), "A+");
+    EXPECT_EQ(cache.get(2), "B");
+
+    cache.put(3, "C");
+
+    EXPECT_EQ(cache.get(1), "");
+    EXPECT_EQ(cache.get(2), "B");
     EXPECT_EQ(cache.get(3), "C");
+}
+
+TEST(FIFOCacheTest, MemoryComputation) {
+    FIFOCache<int, int> cache(2);
+    cache.put(1, 1);
+    EXPECT_EQ(cache.memoryUsed(), 12);
+    cache.put(2, 2);
+    EXPECT_EQ(cache.memoryUsed(), 24);
+    cache.put(3, 3);
+    EXPECT_EQ(cache.memoryUsed(), 24);
+    cache.put(2, 4);
+    EXPECT_EQ(cache.memoryUsed(), 24);
 }

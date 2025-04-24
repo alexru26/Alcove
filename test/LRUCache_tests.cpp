@@ -9,20 +9,53 @@ TEST(LRUCacheTest, BasicEviction) {
     LRUCache<int, std::string> cache(2);
     cache.put(1, "A");
     cache.put(2, "B");
-    cache.get(1);       // Marks 1 as recently used
-    cache.put(3, "C");  // Evicts 2 (least recently used)
+    cache.put(3, "C");
 
-    EXPECT_EQ(cache.get(2), "");   // Evicted
-    EXPECT_EQ(cache.get(1), "A");  // Still present
+    EXPECT_EQ(cache.get(1), "");
+    EXPECT_EQ(cache.get(2), "B");
+    EXPECT_EQ(cache.get(3), "C");
+
+    cache.get(2);
+    cache.put(4, "D");
+
+    EXPECT_EQ(cache.get(1), "");
+    EXPECT_EQ(cache.get(2), "B");
+    EXPECT_EQ(cache.get(3), "");
+    EXPECT_EQ(cache.get(4), "D");
+}
+
+TEST(LRUCacheTest, ZeroCapacity) {
+    LRUCache<int, std::string> cache(0);
+    cache.put(1, "A");
+    EXPECT_EQ(cache.get(1), "");
 }
 
 TEST(LRUCacheTest, UpdateExistingKey) {
     LRUCache<int, std::string> cache(2);
     cache.put(1, "A");
-    cache.put(1, "A+"); // Update and mark as recent
+    cache.put(1, "A+");
     cache.put(2, "B");
-    cache.put(3, "C");  // Evicts 2 (1 is still recent)
 
-    EXPECT_EQ(cache.get(1), ""); // Updated and retained
-    EXPECT_EQ(cache.get(2), "B");   // Evicted
+    EXPECT_EQ(cache.get(1), "A+");
+    EXPECT_EQ(cache.get(2), "B");
+
+    cache.get(1);
+    cache.put(3, "C");
+
+    EXPECT_EQ(cache.get(1), "A+");
+    EXPECT_EQ(cache.get(2), "");
+    EXPECT_EQ(cache.get(3), "C");
+}
+
+TEST(LRUCacheTest, MemoryComputation) {
+    LRUCache<int, int> cache(2);
+    cache.put(1, 1);
+    EXPECT_EQ(cache.memoryUsed(), 24);
+    cache.put(2, 2);
+    EXPECT_EQ(cache.memoryUsed(), 48);
+    cache.get(1);
+    cache.put(3, 3);
+    EXPECT_EQ(cache.memoryUsed(), 48);
+    cache.put(2, 4);
+    EXPECT_EQ(cache.memoryUsed(), 48);
 }
