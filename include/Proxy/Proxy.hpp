@@ -75,7 +75,7 @@ public:
                   << 100.0 * hits / requests.size() << "%\n"
                   << "Average Latency:   " << avg_latency * 1e3 << " ms\n"
                   << "Throughput:        " << throughput << " req/s\n"
-                  << "Total Duration:    " << total_duration.count() << "s\n"
+                  << "Total Duration:    " << total_duration.count() << " s\n"
                   << "Memory Usage:      " << cache->memoryUsed() << " bytes\n";
     }
 };
