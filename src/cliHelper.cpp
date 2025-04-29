@@ -29,7 +29,10 @@ void cliHelper::printBanner() {
 
 void cliHelper::parseArguments(int argc, char *argv[],
     std::string &api, int &num_requests, std::string &cache_type,
-    int &cache_size, int &threads, std::string &random_type) {
+    int &cache_size, int &threads, std::string &random_type,
+    std::unique_ptr<Cache<std::string, nlohmann::json>>& cache,
+    std::unique_ptr<Proxy<std::string, nlohmann::json>>& proxy,
+    std::vector<std::string>& requests) {
 
     for (int i = 1; i < argc; ++i) {
         std::string arg = argv[i];
@@ -68,6 +71,19 @@ void cliHelper::parseArguments(int argc, char *argv[],
 
     if (api.empty() || cache_type.empty() || random_type.empty())
         throw std::runtime_error("Missing required arguments.");
+
+    if (cache_type == "fifo") cache = std::make_unique<FIFOCache<std::string, nlohmann::json>>(cache_size);
+    else if (cache_type == "lru") cache = std::make_unique<LRUCache<std::string, nlohmann::json>>(cache_size);
+    else if (cache_type == "lfu") cache = std::make_unique<LFUCache<std::string, nlohmann::json>>(cache_size);
+
+    if (api == "weather") {
+        proxy = std::make_unique<WeatherProxy>(std::move(cache));
+    }
+    else if (api == "stocks") {
+        proxy = std::make_unique<StocksProxy>(std::move(cache));
+    }
+
+    requests = MyRandom::generateRandomRequests(num_requests, api, random_type);
 }
 
 void cliHelper::displayHelp() {
