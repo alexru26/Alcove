@@ -40,8 +40,9 @@ add_executable(Alcove
         include/Cache/FIFOCache.hpp
         include/Cache/LRUCache.hpp
         include/Cache/LFUCache.hpp
-        include/Proxy/WeatherProxy.hpp
         include/Proxy/Proxy.hpp
+        include/Proxy/WeatherProxy.hpp
+        include/Proxy/StocksProxy.hpp
         include/MyRandom/MyRandom.hpp
 )
 
