@@ -3,17 +3,22 @@
 #include <Cache/LRUCache.hpp>
 
 #include <Proxy/WeatherProxy.hpp>
+#include "Proxy/StocksProxy.hpp"
 
 int main() {
-    auto fifo = std::make_unique<FIFOCache<std::string, nlohmann::json>>(10);
-    auto lru = std::make_unique<LRUCache<std::string, nlohmann::json>>(10);
-    auto lfu = std::make_unique<LFUCache<std::string, nlohmann::json>>(10);
+    using proxy = StocksProxy;
+    int cache_size = 10;
+    constexpr int num_requests = 10;
 
-    WeatherProxy fifo_proxy(std::move(fifo));
-    WeatherProxy lru_proxy(std::move(lru));
-    WeatherProxy lfu_proxy(std::move(lfu));
+    auto fifo = std::make_unique<FIFOCache<std::string, nlohmann::json>>(cache_size);
+    auto lru = std::make_unique<LRUCache<std::string, nlohmann::json>>(cache_size);
+    auto lfu = std::make_unique<LFUCache<std::string, nlohmann::json>>(cache_size);
 
-    const std::vector<std::string> requests = WeatherProxy::getRandomRequests("zipf", 100);
+    proxy fifo_proxy(std::move(fifo));
+    proxy lru_proxy(std::move(lru));
+    proxy lfu_proxy(std::move(lfu));
+
+    const std::vector<std::string> requests = proxy::getRandomRequests("zipf", num_requests);
 
     fifo_proxy.runBenchmark(requests);
     lru_proxy.runBenchmark(requests);

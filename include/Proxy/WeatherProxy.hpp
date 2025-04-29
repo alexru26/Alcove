@@ -6,11 +6,6 @@
 #define WEATHER_PROXY_HPP
 
 #include "Proxy.hpp"
-#include <httplib.h>
-#include <nlohmann/json.hpp>
-#include <MyRandom/MyRandom.hpp>
-
-using json = nlohmann::json;
 
 class WeatherProxy final : public Proxy<std::string, json> {
 private:
@@ -42,7 +37,7 @@ private:
     }
 
 public:
-    using Proxy::Proxy;
+    explicit WeatherProxy(std::unique_ptr<Cache<std::string, nlohmann::json>> cache) : Proxy(std::move(cache)) {}
 
     ~WeatherProxy() override = default;
 

@@ -9,6 +9,11 @@
 #include <chrono>
 #include <iomanip>
 #include <random>
+#include <httplib.h>
+#include <nlohmann/json.hpp>
+#include <MyRandom/MyRandom.hpp>
+
+using json = nlohmann::json;
 
 template<typename Key, typename Value>
 class Proxy {
@@ -18,6 +23,8 @@ protected:
     size_t misses = 0;
     virtual Value runPrivateQuery(const Key& key) = 0;
 public:
+    Proxy() = default;
+
     explicit Proxy(std::unique_ptr<Cache<Key, Value>> cache) : cache(std::move(cache)) {}
 
     virtual ~Proxy() = default;
