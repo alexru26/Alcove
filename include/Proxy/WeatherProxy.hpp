@@ -40,33 +40,6 @@ public:
     explicit WeatherProxy(std::unique_ptr<Cache<std::string, nlohmann::json>> cache) : Proxy(std::move(cache)) {}
 
     ~WeatherProxy() override = default;
-
-    static std::vector<std::string> getRandomRequests(const std::string& type, const size_t num_requests) {
-        static const std::vector<std::string> CITIES = {
-            "Tokyo",      // rank 1
-            "New York",   // rank 2
-            "London",     // rank 3
-            "Paris",      // rank 4
-            "Los Angeles",// rank 5
-            "Beijing",    // rank 6
-            "Shanghai",   // rank 7
-            "Moscow",     // rank 8
-            "São Paulo",  // rank 9
-            "Mumbai",     // rank 10
-            "Berlin",     // rank 11
-            "Dubai",      // rank 12
-            "Singapore",  // rank 13
-            "Rome",       // rank 14
-            "Madrid",     // rank 15
-            "Istanbul",   // rank 16
-            "Seoul",      // rank 17
-            "Toronto",    // rank 18
-            "Sydney",     // rank 19
-            "Mexico City" // rank 20
-        };
-
-        return MyRandom<std::string>::generateRandomRequests(type, num_requests, CITIES);
-    }
 };
 
 #endif // WEATHER_PROXY_HPP

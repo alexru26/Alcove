@@ -40,33 +40,6 @@ public:
     explicit StocksProxy(std::unique_ptr<Cache<std::string, nlohmann::json>> cache) : Proxy(std::move(cache)) {}
 
     ~StocksProxy() override = default;
-
-    static std::vector<std::string> getRandomRequests(const std::string& type, const size_t num_requests) {
-        static const std::vector<std::string> STOCKS = {
-            "AAPL",   // Apple Inc.
-            "MSFT",   // Microsoft Corporation
-            "GOOGL",  // Alphabet Inc. (Class A)
-            "AMZN",   // Amazon.com Inc.
-            "TSLA",   // Tesla Inc.
-            "META",   // Meta Platforms Inc.
-            "NVDA",   // NVIDIA Corporation
-            "JPM",    // JPMorgan Chase & Co.
-            "JNJ",    // Johnson & Johnson
-            "V",      // Visa Inc.
-            "PG",     // Procter & Gamble Co.
-            "UNH",    // UnitedHealth Group Inc.
-            "HD",     // Home Depot Inc.
-            "MA",     // Mastercard Inc.
-            "DIS",    // The Walt Disney Company
-            "BAC",    // Bank of America Corporation
-            "PEP",    // PepsiCo Inc.
-            "KO",     // The Coca-Cola Company
-            "XOM",    // Exxon Mobil Corporation
-            "NFLX"    // Netflix Inc.
-        };
-
-        return MyRandom<std::string>::generateRandomRequests(type, num_requests, STOCKS);
-    }
 };
 
 #endif // STOCKSPROXY_H

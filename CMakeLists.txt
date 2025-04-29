@@ -44,6 +44,8 @@ add_executable(Alcove
         include/Proxy/WeatherProxy.hpp
         include/Proxy/StocksProxy.hpp
         include/MyRandom/MyRandom.hpp
+        src/cliHelper.cpp
+        src/cliHelper.h
 )
 
 target_include_directories(Alcove PUBLIC include)
