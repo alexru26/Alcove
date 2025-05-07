@@ -1,9 +1,15 @@
-FIFOCacheTest.BasicEviction 3 0.00625085
-FIFOCacheTest.ZeroCapacity 3 0.00213436
-FIFOCacheTest.UpdateExistingKey 3 0.00181586
-LRUCacheTest.BasicEviction 3 0.00188894
-LRUCacheTest.UpdateExistingKey 1 0.00494429
-LFUCacheTest.BasicEviction 3 0.00161418
+FIFOCacheTest.BasicEviction 4 0.00592548
+FIFOCacheTest.ZeroCapacity 4 0.00445699
+FIFOCacheTest.UpdateExistingKey 4 0.0036978
+LRUCacheTest.BasicEviction 4 0.00312529
+LRUCacheTest.UpdateExistingKey 2 0.00639848
+LFUCacheTest.BasicEviction 4 0.00325799
 LFUCacheTest.TieBreakerEviction 3 0.001492
-LFUCacheTest.UpdateExistingKey 3 0.00149457
+LFUCacheTest.UpdateExistingKey 4 0.00316774
+FIFOCacheTest.MemoryComputation 1 0.0138313
+LRUCacheTest.ZeroCapacity 1 0.0129478
+LRUCacheTest.MemoryComputation 1 0.012265
+LFUCacheTest.ZeroCapacity 1 0.0123313
+LFUCacheTest.MemoryComputation 1 0.0122445
+StocksProxyTest.KeysQuery 1 24.3219
 ---
