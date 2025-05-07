@@ -48,14 +48,15 @@ public:
     void runBenchmark(const std::vector<Key>& requests, const int num_threads) {
         hits = 0;
         misses = 0;
-        std::atomic<int> processed = 0;
+        std::atomic processed = 0;
         std::mutex latency_mutex;
         std::mutex cout_mutex;
         std::vector<double> latencies;
         latencies.reserve(requests.size());
 
         constexpr std::chrono::milliseconds print_interval(200);
-        std::atomic<std::chrono::steady_clock::time_point> last_print_time(Clock::now());
+        std::chrono::steady_clock::time_point last_print_time = Clock::now();
+        std::mutex last_print_mutex;
 
         const auto start_time = Clock::now();
 
@@ -68,21 +69,26 @@ public:
                 double latency = std::chrono::duration_cast<DoubleDuration>(req_end - req_start).count();
 
                 {
-                    std::lock_guard<std::mutex> lock(latency_mutex);
+                    std::lock_guard lock(latency_mutex);
                     latencies.push_back(latency);
                 }
 
                 size_t current = ++processed;
 
+                bool print = false;
                 const auto now = Clock::now();
-                auto last = last_print_time.load();
-                if (now - last >= print_interval &&
-                    last_print_time.compare_exchange_strong(last, now) ||
-                    current == requests.size()) {
+                {
+                    std::lock_guard last_print_lock(last_print_mutex);
+                    if (now - last_print_time >= print_interval || current == requests.size()) {
+                        last_print_time = now;
+                        print = true;
+                    }
+                }
 
+                if (print) {
                     double avg_latency;
                     {
-                        std::lock_guard lock(latency_mutex);
+                        std::lock_guard latency_lock(latency_mutex);
                         avg_latency = std::accumulate(latencies.begin(), latencies.end(), 0.0) / latencies.size();
                     }
 
