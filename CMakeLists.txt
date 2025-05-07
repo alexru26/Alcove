@@ -53,7 +53,6 @@ target_include_directories(Alcove PUBLIC include)
 target_include_directories(Alcove PRIVATE src)
 
 target_link_libraries(Alcove
-        sqlite3
         httplib
         nlohmann_json::nlohmann_json
 )
@@ -63,12 +62,15 @@ add_executable(CacheTests
         test/FIFOCache_tests.cpp
         test/LRUCache_tests.cpp
         test/LFUCache_tests.cpp
+        test/StocksProxy_tests.cpp
 )
 
 target_include_directories(CacheTests PUBLIC include)
 
 target_link_libraries(CacheTests
         GTest::gtest_main
+        httplib
+        nlohmann_json::nlohmann_json
 )
 
 include(GoogleTest)

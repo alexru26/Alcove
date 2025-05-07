@@ -31,7 +31,7 @@ private:
                     throw std::runtime_error("JSON parse error: " + std::string(e.what()));
                 }
             }
-            throw std::runtime_error("Weather API error: " + res->body);
+            throw std::runtime_error("Weather API error: " + res->body + " Key: " + encoded_key);
         }
         throw std::runtime_error("Connection failed");
     }

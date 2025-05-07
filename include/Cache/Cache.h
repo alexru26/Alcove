@@ -8,6 +8,7 @@
 #include <iostream>
 #include <list>
 #include <queue>
+#include <mutex>
 #include <unordered_map>
 
 template<typename Key, typename Value>
@@ -15,6 +16,7 @@ class Cache {
 protected:
     size_t capacity;
     size_t memory = 0;
+    mutable std::mutex mutex;
 public:
     explicit Cache(const size_t capacity) : capacity(capacity) {}
     virtual ~Cache() = default;

@@ -16,23 +16,22 @@ inline extern const std::vector<std::string> CITIES = {
     "Budapest", "Athens", "Helsinki", "Oslo", "Cape Town", "Nairobi", "Doha", "Kuwait City", "Abu Dhabi", "Riyadh",
     "Tehran", "Cairo", "Casablanca", "Hanoi", "Manila", "Kuala Lumpur", "Taipei", "Tel Aviv", "Johannesburg", "Auckland",
     "Wellington", "Edinburgh", "Birmingham", "Glasgow", "Manchester", "Brisbane", "Perth", "Adelaide", "Frankfurt", "Munich",
-    "Cologne", "Dusseldorf", "Stuttgart", "Hamburg", "Geneva", "Lausanne", "Nice", "Lyon", "Marseille", "Naples",
-    "Florence", "Venice", "Krakow", "Gdansk", "Tallinn", "Riga", "Vilnius", "Reykjavik", "Tbilisi", "Doha",
-    "Bangalore", "Chennai", "Hyderabad", "Pune", "Karachi", "Lahore", "Islamabad", "Accra", "Algiers", "Addis Ababa"
+    "Cologne", "Dusseldorf", "Stuttgart", "Hamburg", "Geneva", "Havana", "Nice", "Lyon", "Marseille", "Naples",
+    "Florence", "Venice", "Krakow", "Gdansk", "Tallinn", "Vilnius", "Reykjavik", "Tbilisi", "Bangalore", "Chennai",
+    "Hyderabad", "Pune", "Karachi", "Lahore", "Islamabad", "Accra", "Algiers", "Addis Ababa", "Damascus", "Amman"
 };
 
 inline extern const std::vector<std::string> STOCKS = {
-    "AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "META", "BRK.B", "UNH", "JNJ",
-    "V", "PG", "MA", "XOM", "HD", "KO", "PEP", "MRK", "LLY", "ABBV",
-    "AVGO", "TMO", "COST", "CVX", "WMT", "DIS", "ORCL", "INTC", "CSCO", "NFLX",
-    "ADBE", "CRM", "BAC", "NKE", "MCD", "DHR", "ABT", "QCOM", "TXN", "PM",
-    "AMD", "IBM", "GE", "GS", "AMAT", "CAT", "LMT", "RTX", "UPS", "BA",
-    "HON", "UNP", "DE", "LOW", "SBUX", "BLK", "MDT", "ISRG", "MO", "PLD",
-    "VRTX", "NOW", "ADI", "CI", "T", "PFE", "GILD", "ZTS", "SPGI", "MS",
-    "AXP", "BKNG", "CB", "REGN", "BDX", "EL", "CL", "ETN", "NSC", "SYK",
-    "CSX", "FDX", "WM", "ROST", "TGT", "TJX", "ECL", "EA", "APD", "FIS",
-    "PAYX", "ADP", "EXC", "SO", "DUK", "NEE", "AEP", "BKR", "SLB", "HAL",
-    "KHC", "WBA", "MMM", "EBAY", "HPQ", "XEL", "MKC", "YUM", "KR", "DAL"
+    "AAPL", "GOOGL", "MSFT", "AMZN", "TSLA", "META", "NVDA", "BABA", "JPM", "JNJ",
+    "V", "PG", "HD", "DIS", "MA", "UNH", "PFE", "KO", "PEP", "INTC",
+    "CSCO", "T", "XOM", "CVX", "WMT", "BAC", "WFC", "C", "NFLX", "ADBE",
+    "CRM", "ORCL", "PYPL", "ABNB", "UBER", "LYFT", "SNAP", "TWTR", "SHOP", "SQ",
+    "ROKU", "SPOT", "ZM", "PLTR", "NIO", "LI", "XPENG", "SONY", "TM", "HMC",
+    "VZ", "BA", "GE", "GM", "F", "LMT", "RTX", "NKE", "SBUX", "MCD",
+    "COST", "TGT", "LOW", "INTU", "QCOM", "TXN", "AMD", "MU", "AVGO", "ADI",
+    "MRK", "ABBV", "BMY", "LLY", "GILD", "AMGN", "CVS", "CI", "HUM", "UNP",
+    "CSX", "NSC", "UPS", "FDX", "CAT", "DE", "MMM", "IBM", "DOW", "GLW",
+    "HON", "APD", "EMR", "ETN", "AON", "SPGI", "ICE", "MS", "BLK", "SCHW"
 };
 
 #endif // CONSTANTS_HPP
