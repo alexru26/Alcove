@@ -1,6 +1,6 @@
-//
-// Created by Alex Ru on 5/7/25.
-//
+// Constants file
+// Alex Ru
+// 5/13/25
 
 #ifndef CONSTANTS_HPP
 #define CONSTANTS_HPP
@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 
+// List of 20 unique cities for weather API
 inline extern const std::vector<std::string> CITIES = {
     "New York", "London", "Tokyo", "Paris", "Shanghai", "Beijing", "Los Angeles", "Chicago", "Singapore", "Hong Kong",
     "Dubai", "Toronto", "Sydney", "San Francisco", "Moscow", "Berlin", "Rome", "Istanbul", "Madrid", "Seoul",
@@ -21,6 +22,7 @@ inline extern const std::vector<std::string> CITIES = {
     "Hyderabad", "Pune", "Karachi", "Lahore", "Islamabad", "Accra", "Algiers", "Addis Ababa", "Damascus", "Amman"
 };
 
+// List of 20 unique stocks for stocks API
 inline extern const std::vector<std::string> STOCKS = {
     "AAPL", "GOOGL", "MSFT", "AMZN", "TSLA", "META", "NVDA", "BABA", "JPM", "JNJ",
     "V", "PG", "HD", "DIS", "MA", "UNH", "PFE", "KO", "PEP", "INTC",

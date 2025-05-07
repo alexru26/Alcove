@@ -1,6 +1,6 @@
-//
-// Created by Alex Ru on 4/29/25.
-//
+// CLI Helper implementation
+// Alex Ru
+// 5/13/25
 
 #include "cliHelper.h"
 

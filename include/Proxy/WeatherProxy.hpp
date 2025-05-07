@@ -1,20 +1,32 @@
-//
-// Created by Alex Ru on 4/12/25.
-//
+// Weather proxy implementation
+// Alex Ru
+// 5/13/25
 
 #ifndef WEATHER_PROXY_HPP
 #define WEATHER_PROXY_HPP
 
 #include "Proxy.hpp"
 
+/**
+ * Weather proxy class that pulls from weather API
+ */
 class WeatherProxy final : public Proxy<std::string, json> {
 private:
+    /**
+     * Private helper function that gets the API key
+     * @return api key
+     */
     static std::string get_api_key() {
         const char* key = std::getenv("WEATHER_API_KEY");
         if (!key) throw std::runtime_error("API key not found in environment!");
         return {key};
     }
 
+    /**
+     * Runs a direct query from weather API
+     * @param key key to query with
+     * @return value returned by weather API
+     */
     json runPrivateQuery(const std::string& key) override {
         httplib::Client cli("https://weather.visualcrossing.com");
         const std::string encoded_key = httplib::detail::encode_url(key);
@@ -37,8 +49,15 @@ private:
     }
 
 public:
+    /**
+     * Explicit constructor that takes in cache as parameter
+     * @param cache unique pointer to cache
+     */
     explicit WeatherProxy(std::unique_ptr<Cache<std::string, nlohmann::json>> cache) : Proxy(std::move(cache)) {}
 
+    /**
+     * Default destructor
+     */
     ~WeatherProxy() override = default;
 };
 

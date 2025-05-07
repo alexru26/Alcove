@@ -1,6 +1,6 @@
-//
-// Created by Alex Ru on 4/12/25.
-//
+// Proxy class implementation
+// Alex Ru
+// 5/13/25
 
 #ifndef PROXY_HPP
 #define PROXY_HPP
@@ -19,32 +19,63 @@ using json = nlohmann::json;
 using Clock = std::chrono::high_resolution_clock;
 using DoubleDuration = std::chrono::duration<double>;
 
+/**
+ * Proxy class that queries and pulls data based on cache
+ * @tparam Key key value type
+ * @tparam Value corresponding value type
+ */
 template<typename Key, typename Value>
 class Proxy {
 protected:
-    std::unique_ptr<Cache<Key, Value>> cache;
-    std::atomic<int> hits = 0;
-    std::atomic<int> misses = 0;
+    std::unique_ptr<Cache<Key, Value>> cache; // Cache to use
+    std::atomic<int> hits = 0; // Number of times data retrieved from cache
+    std::atomic<int> misses = 0; // Number of times data retrieved from API
+
+    /**
+     * Abstract helper method that runs direct query from API
+     * @param key key to query with
+     * @return value returned by API
+     */
     virtual Value runPrivateQuery(const Key& key) = 0;
 public:
+    /**
+     * Default constructor
+     */
     Proxy() = default;
 
+    /**
+     * Explicit constructor that takes in cache as parameter
+     * @param cache unique pointer to cache
+     */
     explicit Proxy(std::unique_ptr<Cache<Key, Value>> cache) : cache(std::move(cache)) {}
 
+    /**
+     * Default constructor
+     */
     virtual ~Proxy() = default;
 
+    /**
+     * Retrieves corresponding value of key. First tries cache, then directly queries from API.
+     * @param key key to query with
+     * @return corresponding value
+     */
     Value query(const Key& key) {
         if (cache->exists(key)) {
-            hits++;
+            ++hits;
             return cache->get(key);
         } else {
-            misses++;
+            ++misses;
             Value result = runPrivateQuery(key);
             cache->put(key, result);
             return result;
         }
     }
 
+    /**
+     * Perform requests with multi-threading, and report results
+     * @param requests list of requests
+     * @param num_threads number of threads to run requests
+     */
     void runBenchmark(const std::vector<Key>& requests, const int num_threads) {
         hits = 0;
         misses = 0;

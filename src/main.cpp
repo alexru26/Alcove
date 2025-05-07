@@ -1,3 +1,7 @@
+// Main file
+// Alex Ru
+// 5/13/25
+
 #include "cliHelper.h"
 
 int main(int argc, char* argv[]) {
