@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/CacheTests.dir/test/LFUCache_tests.cpp.o.d"
   "CMakeFiles/CacheTests.dir/test/LRUCache_tests.cpp.o"
   "CMakeFiles/CacheTests.dir/test/LRUCache_tests.cpp.o.d"
+  "CMakeFiles/CacheTests.dir/test/StocksProxy_tests.cpp.o"
+  "CMakeFiles/CacheTests.dir/test/StocksProxy_tests.cpp.o.d"
   "CacheTests"
   "CacheTests.pdb"
   "CacheTests[1]_tests.cmake"

@@ -11,10 +11,15 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/26ru/CLionProjects/Alcove/test/FIFOCache_tests.cpp" "CMakeFiles/CacheTests.dir/test/FIFOCache_tests.cpp.o" "gcc" "CMakeFiles/CacheTests.dir/test/FIFOCache_tests.cpp.o.d"
   "/Users/26ru/CLionProjects/Alcove/test/LFUCache_tests.cpp" "CMakeFiles/CacheTests.dir/test/LFUCache_tests.cpp.o" "gcc" "CMakeFiles/CacheTests.dir/test/LFUCache_tests.cpp.o.d"
   "/Users/26ru/CLionProjects/Alcove/test/LRUCache_tests.cpp" "CMakeFiles/CacheTests.dir/test/LRUCache_tests.cpp.o" "gcc" "CMakeFiles/CacheTests.dir/test/LRUCache_tests.cpp.o.d"
+  "/Users/26ru/CLionProjects/Alcove/test/StocksProxy_tests.cpp" "CMakeFiles/CacheTests.dir/test/StocksProxy_tests.cpp.o" "gcc" "CMakeFiles/CacheTests.dir/test/StocksProxy_tests.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
 set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_FORWARD_LINKED_INFO_FILES
   )
 
 # Fortran module output directory.

@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "Alcove"
   "Alcove.pdb"
+  "CMakeFiles/Alcove.dir/src/cliHelper.cpp.o"
+  "CMakeFiles/Alcove.dir/src/cliHelper.cpp.o.d"
   "CMakeFiles/Alcove.dir/src/main.cpp.o"
   "CMakeFiles/Alcove.dir/src/main.cpp.o.d"
 )

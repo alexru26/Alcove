@@ -33,6 +33,7 @@ public:
     }
 
     void put(Key key, Value value) override {
+        std::lock_guard<std::mutex> lock(this->mutex);
         if (this->capacity == 0) return;
 
         if (exists(key)) {
@@ -54,6 +55,7 @@ public:
     }
 
     Value get(Key key) override {
+        std::lock_guard<std::mutex> lock(this->mutex);
         return cache.count(key) ? cache[key] : Value();
     }
 
