@@ -10,7 +10,7 @@
 auto cache = std::make_unique<FIFOCache<std::string, nlohmann::json>>(10);
 auto proxy = std::make_unique<WeatherProxy>(std::move(cache));
 
-TEST(StocksProxyTest, KeysQuery) {
+TEST(WeatherProxyTest, KeysQuery) {
     for (const std::string& key : CITIES) {
         proxy->query(key);
     }
