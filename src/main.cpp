@@ -1,7 +1,9 @@
+#include <thread>
+
 #include "cliHelper.h"
 
 int main(int argc, char* argv[]) {
-    int num_requests = 100, cache_size = 10, threads = 1;
+    int num_requests = 100, cache_size = 10, num_threads = 1;
     std::string api, cache_type, random_type;
 
     std::unique_ptr<Cache<std::string, nlohmann::json>> cache;
@@ -9,10 +11,12 @@ int main(int argc, char* argv[]) {
 
     std::vector<std::string> requests;
 
-    cliHelper::parseArguments(argc, argv, api, num_requests, cache_type, cache_size, threads, random_type, cache, proxy, requests);
+    cliHelper::parseArguments(argc, argv, api, num_requests, cache_type, cache_size, num_threads, random_type, cache, proxy, requests);
     cliHelper::printBanner();
 
-    proxy->runBenchmark(requests);
+    proxy->runBenchmark(requests, num_threads);
+
+    std::cout << "Program has ended" << std::endl;
 
     return 0;
 }

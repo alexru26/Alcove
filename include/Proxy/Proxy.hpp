@@ -7,19 +7,24 @@
 
 #include <Cache/Cache.h>
 #include <chrono>
+#include <thread>
+#include <mutex>
+#include <atomic>
 #include <iomanip>
 #include <random>
 #include <httplib.h>
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
+using Clock = std::chrono::high_resolution_clock;
+using DoubleDuration = std::chrono::duration<double>;
 
 template<typename Key, typename Value>
 class Proxy {
 protected:
     std::unique_ptr<Cache<Key, Value>> cache;
-    size_t hits = 0;
-    size_t misses = 0;
+    std::atomic<int> hits = 0;
+    std::atomic<int> misses = 0;
     virtual Value runPrivateQuery(const Key& key) = 0;
 public:
     Proxy() = default;
@@ -40,47 +45,85 @@ public:
         }
     }
 
-    void runBenchmark(const std::vector<Key>& requests) {
+    void runBenchmark(const std::vector<Key>& requests, const int num_threads) {
         hits = 0;
         misses = 0;
-
-        using Clock = std::chrono::high_resolution_clock;
-        using Duration = std::chrono::duration<double>;
-
+        std::atomic<int> processed = 0;
+        std::mutex latency_mutex;
+        std::mutex cout_mutex;
         std::vector<double> latencies;
         latencies.reserve(requests.size());
 
+        constexpr std::chrono::milliseconds print_interval(200);
+        std::atomic<std::chrono::steady_clock::time_point> last_print_time(Clock::now());
+
         const auto start_time = Clock::now();
 
-        for (size_t i = 0; i < requests.size(); ++i) {
-            const auto req_start = Clock::now();
-            query(requests[i]);
-            const auto req_end = Clock::now();
+        auto worker = [&](size_t start_idx, size_t end_idx) {
+            for (size_t i = start_idx; i < end_idx; ++i) {
+                const auto req_start = Clock::now();
+                query(requests[i]); // Make sure `query()` internally updates hits/misses atomically or is synchronized
+                const auto req_end = Clock::now();
 
-            double latency = std::chrono::duration_cast<Duration>(req_end - req_start).count();
-            latencies.push_back(latency);
+                double latency = std::chrono::duration_cast<DoubleDuration>(req_end - req_start).count();
 
-            double avg_latency = std::accumulate(latencies.begin(), latencies.end(), 0.0) / latencies.size();
-            double throughput = (i + 1) / std::chrono::duration_cast<Duration>(req_end - start_time).count();
-            double hit_rate = 100.0 * hits / (i + 1);
+                {
+                    std::lock_guard<std::mutex> lock(latency_mutex);
+                    latencies.push_back(latency);
+                }
 
-            // Clear previous line and print in-place
-            std::cout << "\rRequests: " << (i + 1)
-                      << " | Hit Rate: " << std::fixed << std::setprecision(2) << hit_rate << "%"
-                      << " | Avg Latency: " << avg_latency * 1e3 << " ms"
-                      << " | Throughput: " << throughput << " req/s"
-                      << std::flush;
+                size_t current = ++processed;
+
+                const auto now = Clock::now();
+                auto last = last_print_time.load();
+                if (now - last >= print_interval &&
+                    last_print_time.compare_exchange_strong(last, now) ||
+                    current == requests.size()) {
+
+                    double avg_latency;
+                    {
+                        std::lock_guard lock(latency_mutex);
+                        avg_latency = std::accumulate(latencies.begin(), latencies.end(), 0.0) / latencies.size();
+                    }
+
+                    double throughput = current / std::chrono::duration_cast<DoubleDuration>(now - start_time).count();
+                    double hit_rate = 100.0 * hits / current;
+
+                    std::lock_guard lock(cout_mutex);
+                    std::cout << "\rRequests: " << current
+                              << " | Hit Rate: " << std::fixed << std::setprecision(2) << hit_rate << "%"
+                              << " | Avg Latency: " << avg_latency * 1e3 << " ms"
+                              << " | Throughput: " << throughput << " req/s"
+                              << std::flush;
+                }
+            }
+        };
+
+        std::vector<std::thread> threads;
+        size_t chunk_size = (requests.size() + num_threads - 1) / num_threads;
+
+        for (int t = 0; t < num_threads; ++t) {
+            size_t start_idx = t * chunk_size;
+            size_t end_idx = std::min(start_idx + chunk_size, requests.size());
+            threads.emplace_back(worker, start_idx, end_idx);
+        }
+
+        for (auto& thread : threads) {
+            thread.join();
         }
 
         const auto end_time = Clock::now();
-        const Duration total_duration = end_time - start_time;
+        const DoubleDuration total_duration = end_time - start_time;
+
+        double avg_latency = std::accumulate(latencies.begin(), latencies.end(), 0.0) / latencies.size();
+        double throughput = requests.size() / total_duration.count();
+        double hit_rate = 100.0 * hits / requests.size();
 
         std::cout << "\n\n=== Final Benchmark Results ===\n"
                   << "Total Requests:    " << requests.size() << "\n"
-                  << "Hit Rate:          " << std::fixed << std::setprecision(2)
-                  << 100.0 * hits / requests.size() << "%\n"
-                  << "Average Latency:   " << std::accumulate(latencies.begin(), latencies.end(), 0.0) / latencies.size() * 1e3 << " ms\n"
-                  << "Throughput:        " << requests.size() / total_duration.count() << " req/s\n"
+                  << "Hit Rate:          " << std::fixed << std::setprecision(2) << hit_rate << "%\n"
+                  << "Average Latency:   " << avg_latency * 1e3 << " ms\n"
+                  << "Throughput:        " << throughput << " req/s\n"
                   << "Total Duration:    " << total_duration.count() << " s\n"
                   << "Memory Usage:      " << cache->memoryUsed() << " bytes\n";
     }

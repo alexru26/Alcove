@@ -25,7 +25,7 @@ public:
 
     static void parseArguments(int argc, char* argv[],
         std::string& api, int& num_requests, std::string& cache_type,
-        int& cache_size, int& threads, std::string& random_type,
+        int& cache_size, int& num_threads, std::string& random_type,
         std::unique_ptr<Cache<std::string, nlohmann::json>>& cache,
         std::unique_ptr<Proxy<std::string, nlohmann::json>>& proxy,
         std::vector<std::string>& requests);

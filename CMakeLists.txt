@@ -35,7 +35,6 @@ enable_testing()
 
 # Add main project executable
 add_executable(Alcove
-        src/main.cpp
         include/Cache/Cache.h
         include/Cache/FIFOCache.hpp
         include/Cache/LRUCache.hpp
@@ -44,8 +43,10 @@ add_executable(Alcove
         include/Proxy/WeatherProxy.hpp
         include/Proxy/StocksProxy.hpp
         include/MyRandom/MyRandom.hpp
+        include/MyRandom/Constants.hpp
         src/cliHelper.cpp
         src/cliHelper.h
+        src/main.cpp
 )
 
 target_include_directories(Alcove PUBLIC include)

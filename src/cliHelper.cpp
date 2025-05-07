@@ -8,7 +8,7 @@ int cliHelper::parseIntArg(const char* arg, const std::string& flagName) {
     try {
         return std::stoi(arg);
     } catch (const std::invalid_argument&) {
-        throw std::runtime_error("Error: Invalid number for " + flagName + ". Must be a positive integer.");
+        throw std::runtime_error("Error: Invalid number for " + flagName + ".");
     } catch (const std::out_of_range&) {
         throw std::runtime_error("Error: Number out of range for " + flagName + ".");
     }
@@ -29,7 +29,7 @@ void cliHelper::printBanner() {
 
 void cliHelper::parseArguments(int argc, char *argv[],
     std::string &api, int &num_requests, std::string &cache_type,
-    int &cache_size, int &threads, std::string &random_type,
+    int &cache_size, int &num_threads, std::string &random_type,
     std::unique_ptr<Cache<std::string, nlohmann::json>>& cache,
     std::unique_ptr<Proxy<std::string, nlohmann::json>>& proxy,
     std::vector<std::string>& requests) {
@@ -58,14 +58,14 @@ void cliHelper::parseArguments(int argc, char *argv[],
             cache_size = parseIntArg(argv[i], "size");
         } else if (arg == "--threads" || arg == "-th") {
             if (++i >= argc) throw std::runtime_error("Missing value for --threads");
-            threads = parseIntArg(argv[i], "threads");
+            num_threads = parseIntArg(argv[i], "threads");
         } else if (arg == "--random" || arg == "-r") {
             if (++i >= argc) throw std::runtime_error("Missing value for --random");
             random_type = argv[i];
             if (random_type != "uniform" && random_type != "zipf")
                 throw std::runtime_error("Invalid random type. Use 'uniform' or 'zipf'.");
         } else {
-            throw std::runtime_error("Unknown option '" + arg + "'. Use --help for usage.");
+            throw std::runtime_error("Unknown arg '" + arg + "'. Use --help or -h for usage.");
         }
     }
 
