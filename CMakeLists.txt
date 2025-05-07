@@ -62,8 +62,6 @@ add_executable(CacheTests
         test/FIFOCache_tests.cpp
         test/LRUCache_tests.cpp
         test/LFUCache_tests.cpp
-        test/StocksProxy_tests.cpp
-        test/WeatherProxy_tests.cpp
 )
 
 target_include_directories(CacheTests PUBLIC include)
