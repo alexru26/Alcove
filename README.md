@@ -72,6 +72,7 @@ This is the C++ project structure I chose to go with. It's pretty standard since
 ```
 Alcove/
 |-- src/
+|   |-- helper.h
 |   |-- main.cpp
 |-- include/
 |   |-- module1/
@@ -80,7 +81,7 @@ Alcove/
 |   |-- module2/
 |   |   |-- module2a.h
 |   |   |-- module2b.h
-|-- tests/
+|-- test/
 |   |-- test1.cpp
 |   |-- test2.cpp
 |-- build/
