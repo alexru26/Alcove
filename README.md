@@ -26,7 +26,7 @@ To test each caching algorithm, I run multiple requests to an API and store them
 | Memory Usage    | Memory consumed by cache data structures |
 
 ## Command Line Arguments
-### --api [type]
+### --api / -a [type]
 API to pull data from. This is required. Options are:
 
 | Argument | Description                                                |
@@ -34,19 +34,19 @@ API to pull data from. This is required. Options are:
 | weather  | Daily weather data from https://weather.visualcrossing.com |
 | stocks   | Daily raw stock data from https://www.alphavantage.co      |
 
-### --requests [num]
+### --requests / -req [num]
 Number of requests to perform. Default is 100.
 
-### --cache [type]
+### --cache / -c [type]
 Type of caching algorithm to use. This is required. Options are fifo, lru, and lfu. See section for differences. 
 
-### --size [num]
+### --size / -s [num]
 Number of items a cache can hold. Default is 10.
 
-### --threads [num]
+### --threads / -th [num]
 Number of CPU threads to use for the program. Default is 1.
 
-### --random [type]
+### --random / -r [type]
 Random distribution algorithm to use. This is required. Options are:
 
 | Argument | Description                                                                                                                                   |
