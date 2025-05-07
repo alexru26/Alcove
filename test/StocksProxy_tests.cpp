@@ -7,10 +7,10 @@
 #include <gtest/gtest.h>
 #include <MyRandom/Constants.hpp>
 
-auto cache = std::make_unique<FIFOCache<std::string, nlohmann::json>>(10);
-auto proxy = std::make_unique<StocksProxy>(std::move(cache));
-
 TEST(StocksProxyTest, KeysQuery) {
+    auto cache = std::make_unique<FIFOCache<std::string, nlohmann::json>>(0);
+    const auto proxy = std::make_unique<StocksProxy>(std::move(cache));
+
     for (const std::string& key : STOCKS) {
         proxy->query(key);
     }
