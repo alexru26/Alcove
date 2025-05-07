@@ -55,7 +55,7 @@ public:
         latencies.reserve(requests.size());
 
         constexpr std::chrono::milliseconds print_interval(200);
-        std::chrono::steady_clock::time_point last_print_time = Clock::now();
+        auto last_print_time = Clock::now();
         std::mutex last_print_mutex;
 
         const auto start_time = Clock::now();
@@ -63,7 +63,7 @@ public:
         auto worker = [&](size_t start_idx, size_t end_idx) {
             for (size_t i = start_idx; i < end_idx; ++i) {
                 const auto req_start = Clock::now();
-                query(requests[i]); // Make sure `query()` internally updates hits/misses atomically or is synchronized
+                query(requests[i]);
                 const auto req_end = Clock::now();
 
                 double latency = std::chrono::duration_cast<DoubleDuration>(req_end - req_start).count();
