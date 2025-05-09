@@ -1,64 +1,112 @@
-//
-// Created by Alex Ru on 3/31/25.
-//
+// FIFO Cache implementation
+// Alex Ru
+// 5/13/25
 
 #ifndef FIFOCACHE_HPP
 #define FIFOCACHE_HPP
 
 #include "Cache.h"
 
+/**
+ * FIFO Cache class that uses FIFO algorithm to store keys and values
+ * @tparam Key key value type
+ * @tparam Value corresponding value type
+ */
 template<typename Key, typename Value>
 class FIFOCache final : public Cache<Key, Value> {
 private:
-    std::queue<Key> keys;
-    std::unordered_map<Key, Value> cache;
+    std::queue<Key> keys; // Queue of stored keys
+    std::unordered_map<Key, Value> cache; // Mapping of keys to corresponding value
 public:
+    /**
+     * Explicit constructor that takes in capacity as parameter
+     * @param capacity size of cache, aka amount it can hold
+     */
     explicit FIFOCache(size_t capacity) : Cache<Key, Value>(capacity) {}
 
+    /**
+     * Default destructor
+     */
     ~FIFOCache() override = default;
 
+    /**
+     * Copy constructor
+     * @param other other FIFO cache to copy
+     */
     FIFOCache(const FIFOCache& other): Cache<Key, Value>(other) {
         this->keys = other.keys;
         this->cache = other.cache;
     }
 
+    /**
+     * Assignment operator
+     * @param other other FIFO cache to copy
+     * @return copied FIFO cache
+     */
     FIFOCache& operator=(const FIFOCache& other) {
         this->keys = other.keys;
         this->cache = other.cache;
         return *this;
     }
 
+    /**
+     * Checks if key exists in FIFO cache
+     * @param key key value to check
+     * @return whether key exists
+     */
     bool exists(Key key) override {
         return cache.count(key);
     }
 
+    /**
+     * Stores key and value into the FIFO cache
+     * @param key key value
+     * @param value corresponding value
+     */
     void put(Key key, Value value) override {
+        // Lock cache
         std::lock_guard<std::mutex> lock(this->mutex);
+
+        // Empty cache
         if (this->capacity == 0) return;
 
+        // If key is already in cache
         if (exists(key)) {
             cache[key] = value;
             return;
         }
 
+        // If cache is full
         if (keys.size() >= this->capacity) {
+            // Evict key
             Key evict = keys.front();
             keys.pop();
             cache.erase(evict);
-
             this->memory -= 2 * sizeof(evict) + sizeof(cache[evict]);
         }
 
+        // Add to cache
         keys.push(key);
         cache[key] = value;
         this->memory += 2 * sizeof(key) + sizeof(value);
     }
 
+    /**
+     * Returns the value given key
+     * @param key key value
+     * @return corresponding value
+     */
     Value get(Key key) override {
+        // Lock cache
         std::lock_guard<std::mutex> lock(this->mutex);
+
+        // If exists return, else return empty
         return cache.count(key) ? cache[key] : Value();
     }
 
+    /**
+     * Prints out the content of the FIFO cache
+     */
     void print() override {
         std::queue<Key> temp = keys;
         while (!temp.empty()) {

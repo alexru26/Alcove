@@ -1,6 +1,6 @@
-//
-// Created by Alex Ru on 4/12/25.
-//
+// Proxy class implementation
+// Alex Ru
+// 5/13/25
 
 #ifndef PROXY_HPP
 #define PROXY_HPP
@@ -19,33 +19,67 @@ using json = nlohmann::json;
 using Clock = std::chrono::high_resolution_clock;
 using DoubleDuration = std::chrono::duration<double>;
 
+/**
+ * Proxy class that queries and pulls data based on cache
+ * @tparam Key key value type
+ * @tparam Value corresponding value type
+ */
 template<typename Key, typename Value>
 class Proxy {
 protected:
-    std::unique_ptr<Cache<Key, Value>> cache;
-    std::atomic<int> hits = 0;
-    std::atomic<int> misses = 0;
+    std::unique_ptr<Cache<Key, Value>> cache; // Cache to use
+    std::atomic<int> hits = 0; // Number of times data retrieved from cache
+    std::atomic<int> misses = 0; // Number of times data retrieved from API
+
+    /**
+     * Abstract helper method that runs direct query from API
+     * @param key key to query with
+     * @return value returned by API
+     */
     virtual Value runPrivateQuery(const Key& key) = 0;
 public:
+    /**
+     * Default constructor
+     */
     Proxy() = default;
 
+    /**
+     * Explicit constructor that takes in cache as parameter
+     * @param cache unique pointer to cache
+     */
     explicit Proxy(std::unique_ptr<Cache<Key, Value>> cache) : cache(std::move(cache)) {}
 
+    /**
+     * Default constructor
+     */
     virtual ~Proxy() = default;
 
+    /**
+     * Retrieves corresponding value of key. First tries cache, then directly queries from API.
+     * @param key key to query with
+     * @return corresponding value
+     */
     Value query(const Key& key) {
+        // If cache has the key already
         if (cache->exists(key)) {
-            hits++;
+            ++hits;
             return cache->get(key);
         } else {
-            misses++;
+            // Query from API
+            ++misses;
             Value result = runPrivateQuery(key);
             cache->put(key, result);
             return result;
         }
     }
 
+    /**
+     * Perform requests with multi-threading, and report results
+     * @param requests list of requests
+     * @param num_threads number of threads to run requests
+     */
     void runBenchmark(const std::vector<Key>& requests, const int num_threads) {
+        // Statistics variiables
         hits = 0;
         misses = 0;
         std::atomic processed = 0;
@@ -57,24 +91,26 @@ public:
         constexpr std::chrono::milliseconds print_interval(200);
         auto last_print_time = Clock::now();
         std::mutex last_print_mutex;
-
         const auto start_time = Clock::now();
 
-        auto worker = [&](size_t start_idx, size_t end_idx) {
+        // Worker thread
+        auto worker = [&](const size_t start_idx, const size_t end_idx) {
+            // Iterate through batch
             for (size_t i = start_idx; i < end_idx; ++i) {
+                // Calculate time
                 const auto req_start = Clock::now();
                 query(requests[i]);
                 const auto req_end = Clock::now();
-
                 double latency = std::chrono::duration_cast<DoubleDuration>(req_end - req_start).count();
 
+                // Lock latency and add to latencies
                 {
                     std::lock_guard lock(latency_mutex);
                     latencies.push_back(latency);
                 }
 
+                // Check last print time
                 size_t current = ++processed;
-
                 bool print = false;
                 const auto now = Clock::now();
                 {
@@ -85,6 +121,7 @@ public:
                     }
                 }
 
+                // If print
                 if (print) {
                     double avg_latency;
                     {
@@ -92,32 +129,37 @@ public:
                         avg_latency = std::accumulate(latencies.begin(), latencies.end(), 0.0) / latencies.size();
                     }
 
-                    double throughput = current / std::chrono::duration_cast<DoubleDuration>(now - start_time).count();
-                    double hit_rate = 100.0 * hits / current;
-
-                    std::lock_guard lock(cout_mutex);
-                    std::cout << "\rRequests: " << current
-                              << " | Hit Rate: " << std::fixed << std::setprecision(2) << hit_rate << "%"
-                              << " | Avg Latency: " << avg_latency * 1e3 << " ms"
-                              << " | Throughput: " << throughput << " req/s"
-                              << std::flush;
+                    const double throughput = current / std::chrono::duration_cast<DoubleDuration>(now - start_time).count();
+                    const double hit_rate = 100.0 * hits / current;
+                    {
+                        std::lock_guard lock(cout_mutex);
+                        std::cout << "\rRequests: " << current
+                                  << " | Hit Rate: " << std::fixed << std::setprecision(2) << hit_rate << "%"
+                                  << " | Avg Latency: " << avg_latency * 1e3 << " ms"
+                                  << " | Throughput: " << throughput << " req/s"
+                                  << std::flush;
+                    }
                 }
             }
         };
 
+        // Create threads and portion
         std::vector<std::thread> threads;
-        size_t chunk_size = (requests.size() + num_threads - 1) / num_threads;
+        const size_t chunk_size = (requests.size() + num_threads - 1) / num_threads;
 
+        // Add threads
         for (int t = 0; t < num_threads; ++t) {
             size_t start_idx = t * chunk_size;
             size_t end_idx = std::min(start_idx + chunk_size, requests.size());
             threads.emplace_back(worker, start_idx, end_idx);
         }
 
+        // Do threads
         for (auto& thread : threads) {
             thread.join();
         }
 
+        // Calculate stats
         const auto end_time = Clock::now();
         const DoubleDuration total_duration = end_time - start_time;
 
@@ -125,6 +167,7 @@ public:
         double throughput = requests.size() / total_duration.count();
         double hit_rate = 100.0 * hits / requests.size();
 
+        // Print final stats
         std::cout << "\n\n=== Final Benchmark Results ===\n"
                   << "Total Requests:    " << requests.size() << "\n"
                   << "Hit Rate:          " << std::fixed << std::setprecision(2) << hit_rate << "%\n"

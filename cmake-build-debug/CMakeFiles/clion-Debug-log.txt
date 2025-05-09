@@ -27,6 +27,6 @@ CMake Deprecation Warning at cmake-build-debug/_deps/googletest-src/googletest/C
 
 
 -- Using the multi-header code from /Users/26ru/CLionProjects/Alcove/cmake-build-debug/_deps/nlohmann_json-src/include/
--- Configuring done (0.8s)
+-- Configuring done (1.3s)
 -- Generating done (0.0s)
 -- Build files have been written to: /Users/26ru/CLionProjects/Alcove/cmake-build-debug

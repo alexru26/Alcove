@@ -1,6 +1,6 @@
-//
-// Created by Alex Ru on 5/7/25.
-//
+// Tests for stocks proxy
+// Alex Ru
+// 5/13/25
 
 #include <Cache/FIFOCache.hpp>
 #include <Proxy/StocksProxy.hpp>

@@ -1,6 +1,6 @@
-//
-// Created by Alex Ru on 4/12/25.
-//
+// Tests for LRU Cache
+// Alex Ru
+// 5/13/25
 
 #include <Cache/LRUCache.hpp>
 #include <gtest/gtest.h>
