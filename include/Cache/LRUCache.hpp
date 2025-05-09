@@ -65,9 +65,13 @@ public:
      * @param value corresponding value
      */
     void put(Key key, Value value) override {
+        // Lock cache
         std::lock_guard<std::mutex> lock(this->mutex);
+
+        // Empty cache
         if (this->capacity == 0) return;
 
+        // If key is already in cache
         if (exists(key)) {
             keys.erase(cache[key].second);
             keys.push_front(key);
@@ -76,13 +80,16 @@ public:
             return;
         }
 
+        // If cache is full
         if (keys.size() >= this->capacity) {
+            // Evict key
             Key evict = keys.back();
             keys.pop_back();
             this->memory -= 2 * sizeof(key) + sizeof(cache[evict]);
             cache.erase(evict);
         }
 
+        // Add to cache
         keys.push_front(key);
         cache[key] = {value, keys.begin()};
         this->memory += 2 * sizeof(key) + sizeof(cache[key]);
@@ -94,10 +101,14 @@ public:
      * @return corresponding value
      */
     Value get(Key key) override {
+        // Lock cache
         std::lock_guard<std::mutex> lock(this->mutex);
+
+        // If key doesn't exist, return empty
         auto it = cache.find(key);
         if (it == cache.end()) return Value();
 
+        // Put key to front
         keys.erase(it->second.second);
         keys.push_front(key);
         it->second.second = keys.begin();

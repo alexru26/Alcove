@@ -28,6 +28,7 @@ private:
      * @return value returned by weather API
      */
     json runPrivateQuery(const std::string& key) override {
+        // Create and parse the path
         httplib::Client cli("https://weather.visualcrossing.com");
         const std::string encoded_key = httplib::detail::encode_url(key);
         const std::string path = "/VisualCrossingWebServices/rest/services/timeline/"
@@ -35,6 +36,7 @@ private:
                                + "/today?key="
                                + get_api_key();
 
+        // Do call
         if (auto res = cli.Get(path)) {
             if (res->status == 200) {
                 try {

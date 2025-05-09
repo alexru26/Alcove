@@ -64,22 +64,28 @@ public:
      * @param value corresponding value
      */
     void put(Key key, Value value) override {
+        // Lock cache
         std::lock_guard<std::mutex> lock(this->mutex);
+
+        // Empty cache
         if (this->capacity == 0) return;
 
+        // If key is already in cache
         if (exists(key)) {
             cache[key] = value;
             return;
         }
 
+        // If cache is full
         if (keys.size() >= this->capacity) {
+            // Evict key
             Key evict = keys.front();
             keys.pop();
             cache.erase(evict);
-
             this->memory -= 2 * sizeof(evict) + sizeof(cache[evict]);
         }
 
+        // Add to cache
         keys.push(key);
         cache[key] = value;
         this->memory += 2 * sizeof(key) + sizeof(value);
@@ -91,7 +97,10 @@ public:
      * @return corresponding value
      */
     Value get(Key key) override {
+        // Lock cache
         std::lock_guard<std::mutex> lock(this->mutex);
+
+        // If exists return, else return empty
         return cache.count(key) ? cache[key] : Value();
     }
 

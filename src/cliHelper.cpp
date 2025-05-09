@@ -6,6 +6,7 @@
 
 int cliHelper::parseIntArg(const char* arg, const std::string& flagName) {
     try {
+        // Parse int argument
         return std::stoi(arg);
     } catch (const std::invalid_argument&) {
         throw std::runtime_error("Error: Invalid number for " + flagName + ".");
@@ -34,9 +35,11 @@ void cliHelper::parseArguments(int argc, char *argv[],
     std::unique_ptr<Proxy<std::string, nlohmann::json>>& proxy,
     std::vector<std::string>& requests) {
 
+    // For every argument
     for (int i = 1; i < argc; ++i) {
         std::string arg = argv[i];
 
+        // Parse the correct argument
         if (arg == "--help" || arg == "-h") {
             displayHelp();
             exit(0);
@@ -69,13 +72,16 @@ void cliHelper::parseArguments(int argc, char *argv[],
         }
     }
 
+    // Check required arguments
     if (api.empty() || cache_type.empty() || random_type.empty())
         throw std::runtime_error("Missing required arguments.");
 
+    // Create cache
     if (cache_type == "fifo") cache = std::make_unique<FIFOCache<std::string, nlohmann::json>>(cache_size);
     else if (cache_type == "lru") cache = std::make_unique<LRUCache<std::string, nlohmann::json>>(cache_size);
     else if (cache_type == "lfu") cache = std::make_unique<LFUCache<std::string, nlohmann::json>>(cache_size);
 
+    // Create proxy
     if (api == "weather") {
         proxy = std::make_unique<WeatherProxy>(std::move(cache));
     }
@@ -83,6 +89,7 @@ void cliHelper::parseArguments(int argc, char *argv[],
         proxy = std::make_unique<StocksProxy>(std::move(cache));
     }
 
+    // Create requests
     requests = MyRandom::generateRandomRequests(num_requests, api, random_type);
 }
 

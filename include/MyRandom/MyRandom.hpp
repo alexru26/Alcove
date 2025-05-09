@@ -27,8 +27,10 @@ public:
         std::vector<std::string> requests;
         requests.reserve(num_requests);
 
+        // Create uniform distribution
         std::uniform_int_distribution<size_t> dist(0, options.size() - 1);
 
+        // Generate and add to requests
         for (size_t i = 0; i < num_requests; ++i) {
             requests.push_back(options[dist(gen)]);
         }
@@ -45,16 +47,19 @@ public:
         std::vector<std::string> requests;
         requests.reserve(num_requests);
 
-        const double s = 1.0;
         std::vector<double> weights;
         weights.reserve(options.size());
 
+        // Create weights for each option
         for (size_t i = 0; i < options.size(); ++i) {
+            constexpr double s = 2.0;
             weights.push_back(1.0 / std::pow(i + 1, s));
         }
 
+        // Create discrete distribution
         std::discrete_distribution<size_t> dist(weights.begin(), weights.end());
 
+        // Generate and add to requests
         for (size_t i = 0; i < num_requests; ++i) {
             requests.push_back(options[dist(gen)]);
         }
@@ -69,7 +74,10 @@ public:
      * @return random requests
      */
     static std::vector<std::string> generateRandomRequests(const size_t num_requests, const std::string& api, const std::string& random_type) {
+        // Determine the option list based on api
         const std::vector<std::string> options = api == "weather" ? CITIES : STOCKS;
+
+        // Generate and return
         if (random_type == "uniform") {
             return generateUniformRandomRequests(num_requests, options);
         }

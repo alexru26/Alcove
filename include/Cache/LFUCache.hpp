@@ -73,21 +73,29 @@ public:
      * @param value corresponding value
      */
     void put(Key key, Value value) override {
+        // Lock cache
         std::lock_guard<std::mutex> lock(this->mutex);
+
+        // Empty cache
         if (this->capacity == 0) return;
 
+        // If key is already in cache
         if (exists(key)) {
             Node& node = cache[key];
             node.value = value;
             return;
         }
 
+        // If cache is full
         if (cache.size() == this->capacity) {
+            // Evict key
             Key evict = freqList[minFreq].back();
             Node& evicted_node = cache[evict];
             freqList[minFreq].pop_back();
             cache.erase(evict);
             this->memory -= 2 * sizeof(evict) + sizeof(evicted_node);
+
+            // If the frequency list is empty, erase list
             if (freqList[minFreq].empty()) {
                 freqList.erase(minFreq);
                 minFreq++;
@@ -95,6 +103,7 @@ public:
             }
         }
 
+        // Add to cache
         freqList[1].push_front(key);
         if (minFreq != 1) this->memory += sizeof(minFreq);
         cache[key] = {value, 1, freqList[1].begin()};
@@ -108,19 +117,27 @@ public:
      * @return corresponding value
      */
     Value get(Key key) override {
+        // Lock cache
         std::lock_guard<std::mutex> lock(this->mutex);
+
+        // If key doesn't exist, return empty
         if (!exists(key)) return Value();
 
+        // Temporarily store node (for clean code)
         Node& node = cache[key];
         int oldFreq = node.freq;
 
+        // Erase key
         freqList[oldFreq].erase(node.listIt);
+
+        // If the frequency list is empty, erase list
         if (freqList[oldFreq].empty()) {
             freqList.erase(oldFreq);
             this->memory -= sizeof(oldFreq);
             if (minFreq == oldFreq) minFreq++;
         }
 
+        // Update frequency and add to new list
         ++node.freq;
         freqList[node.freq].push_front(key);
         if (freqList[node.freq].size() == 1) this->memory += sizeof(int);

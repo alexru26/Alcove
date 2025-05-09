@@ -28,6 +28,7 @@ private:
      * @return value returned by stocks API
      */
     json runPrivateQuery(const std::string& key) override {
+        // Create and parse the path
         httplib::Client cli("https://www.alphavantage.co");
         const std::string encoded_key = httplib::detail::encode_url(key);
         const std::string path = "/query?function=TIME_SERIES_DAILY&symbol="
@@ -35,6 +36,7 @@ private:
                                + "&apikey="
                                + get_api_key();
 
+        // Do call
         if (auto res = cli.Get(path)) {
             if (res->status == 200) {
                 try {
